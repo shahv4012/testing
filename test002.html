@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta name="google-site-verification" content="GRjWS3m0w_bG4t6B6RrXTYqS5ZvtKVpcedOXyWjVMvc" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ground Team Red • Official site</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="faviGTR.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+    .body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #f4f4f4;
+        overflow-x: hidden;
+    }
+
+    .header {
+        position: relative;
+        z-index: 1000;
+        background-color: white; /* atau warna solid yang sesuai */
+    }
+
+    .banner {
+        position: relative;
+        z-index: 1;
+        }
+
+    body {
+      /* Letakkan nama fail gambar anda di sini */
+      background-image: url('backgroundAA.png');
+
+      /* Untuk pastikan gambar penuh satu skrin */
+      background-size: cover;
+
+      /* Untuk letakkan gambar di tengah */
+      background-position: center;
+
+      /* Untuk elak gambar berulang-ulang */
+      background-repeat: no-repeat;
+
+      /* (Pilihan) Untuk buat gambar statik bila skrol */
+      background-attachment: fixed; 
+    }
+    
+  </style>
+</head>
+<body>
+  <style>
+
+    /* ===========================
+   🟥 NOTICE BAR STYLE
+   =========================== */
+
+.notice-bar {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+
+.notice-track {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollLoop 25s linear infinite;
+}
+
+.notice-content {
+  flex-shrink: 0;
+  padding-right: 120px; /* ✅ jarak antara loop (delay effect) */
+  color: #800000;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+@keyframes scrollLoop {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+    /* ===========================
+   🟥 SIDEBAR NAVIGATION STYLE
+   =========================== */
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 100%;
+  background-color: #fff;
+  color: #800000;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
+  transition: width 0.4s cubic-bezier(0.25, 1.25, 0.5, 1);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Bila sidebar tutup */
+.sidebar.closed {
+  width: 65px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 20px 70px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Header line penuh kanan */
+.sidebar-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #eee;
+}
+
+.sidebar-header img {
+  max-height: 35px;
+  width: auto;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-header i {
+  font-size: 20px;
+  cursor: pointer;
+  color: #800000;
+}
+
+.sidebar.closed .sidebar-header img {
+  opacity: 0; /* Sembunyi logo bila tutup */
+}
+
+/* Nav Links */
+.nav-links {
+  padding: 10px 0;
+  flex-grow: 1;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+}
+.nav-links::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Nav Item */
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Arrow align kanan */
+  gap: 15px;
+  padding: 14px 20px;
+  font-size: 15px;
+  color: #800000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-item i {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.nav-item:hover {
+  background-color: rgba(128, 0, 0, 0.08);
+}
+
+.nav-item.active {
+  background-color: #800000;
+  color: white;
+  border-radius: 8px;
+  margin: 0 10px;
+}
+
+/* Anak panah dropdown */
+.arrow {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.arrow.rotate {
+  transform: rotate(180deg);
+}
+
+/* Bila sidebar tutup */
+.sidebar.closed .nav-item {
+  justify-content: center;
+  padding: 14px 0;
+}
+
+.sidebar.closed .nav-item span {
+  display: none;
+}
+
+.sidebar.closed .arrow {
+  display: none;
+}
+
+/* Submenu */
+.submenu {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  border-left: 2px solid rgba(128, 0, 0, 0.15);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+.submenu.open {
+  max-height: 300px; /* adjust ikut isi submenu */
+}
+
+.submenu a {
+  text-decoration: none;
+  color: #800000;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.submenu a:hover {
+  text-decoration: underline;
+}
+
+/* Logout Button */
+.logout {
+  border-top: 1px solid #eee;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #800000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout:hover {
+  background-color: #f7e7e7;
+}
+
+.sidebar.closed .logout {
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.sidebar.closed .logout span {
+  display: none;
+}
+
+/* Hamburger */
+.hamburger {
+  position: fixed;
+  top: 10px;
+  left: 22px;
+  font-size: 24px;
+  color: #800000;
+  cursor: pointer;
+  z-index: 2100;
+  transition: transform 0.4s ease;
+}
+
+.hamburger.active {
+  transform: rotate(90deg);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1500;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .sidebar {
+    left: -270px;
+  }
+  .sidebar.open {
+    left: 0;
+  }
+}
+
+/* Extra fix */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Global scroll hide fallback */
+* {
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+    /* === MAIN CONTENT === */
+    main {
+      margin-top: 70px;
+      padding: 20px;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ✅ NOTICE BAR -->
+
+  <!-- Notice Bar -->
+
+  <!-- Notice Bar -->
+<div class="notice-bar">
+  <div class="notice-track">
+    <div class="notice-content">
+      📢 Sila semak memo terkini di portal GTR — Dashboard akan dikemaskini pada jam 3:00PM — Terima kasih atas kerjasama anda! 📢
+    </div>
+    <div class="notice-content">
+      📢 Sila semak memo terkini di portal GTR — Dashboard akan dikemaskini pada jam 3:00PM — Terima kasih atas kerjasama anda! 📢
+    </div>
+  </div>
+</div>
+
+  
+  <!-- ✅ SIDEBAR NAVIGATION -->
+
+<!-- Hamburger Button -->
+<div class="hamburger" id="menuBtn">
+  <i class="fas fa-bars"></i>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar closed" id="sidebar">
+  <div>
+    <!-- Header -->
+    <div class="sidebar-header">
+      <a href="index.html" class="header-logo">
+        <img src="logoGTR.png" alt="GTR Logo" />
+      </a>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+
+      <!-- MEMO -->
+      <div class="nav-item">
+        <div class="nav-main">
+          <i class="fas fa-file-alt"></i>
+          <span>Memo</span>
+        </div>
+        <i class="fas fa-chevron-down arrow"></i>
+      </div>
+      <div class="submenu">
+        <a href="#">Memo Terkini</a>
+        <a href="#">E-Library</a>
+        <a href="#">Appsheet</a>
+        <a href="#">Ticket Repairing</a>
+      </div>
+
+      <!-- RAMP -->
+      <div class="nav-item">
+        <div class="nav-main">
+          <i class="fa-solid fa-helmet-safety"></i>
+          <span>Ramp</span>
+        </div>
+        <i class="fas fa-chevron-down arrow"></i>
+      </div>
+      <div class="submenu">
+        <a href="ramp/klia2ops">KLIA 2 Ops </a>
+        <a href="FOCA OPS">FOCA OPS </a>
+        <a href="GSE">GSE </a>
+        <a href="BH">Baggage Handling(BH) </a>
+        <a href="LC">Load Control(LC) </a>
+        <a href="Training">Training </a>
+        <a href="AIC">AIC </a>
+        <a href="RampStore">Ramp Store </a>
+      </div>
+
+      <!-- DASHBOARD -->
+      <div class="nav-item">
+        <div class="nav-main">
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </div>
+        <i class="fas fa-chevron-down arrow"></i>
+      </div>
+      <div class="submenu">
+        <a href="#">Looker Studio</a>
+        <a href="#">Tableau</a>
+        <a href="Operations.html">Aviation Operations Dashboard</a>
+      </div>
+
+      <!-- VIDEO -->
+      <div class="nav-item">
+        <div class="nav-main">
+          <i class="fas fa-video"></i>
+          <span>Video</span>
+        </div>
+        <i class="fas fa-chevron-down arrow"></i>
+      </div>
+      <div class="submenu">
+        <a href="#">Tutorial</a>
+        <a href="#">YouTube</a>
+      </div>
+
+      <!-- PARTNERS -->
+      <div class="nav-item">
+        <div class="nav-main">
+          <i class="fas fa-handshake"></i>
+          <span>Partners</span>
+        </div>
+        <!--<i class="fas fa-chevron-down arrow"></i>-->
+      </div>
+      <div class="submenu">
+        <a href="#">AirAsia</a>
+        <a href="#">Etihad</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Logout -->
+  <div class="logout">
+    <i class="fas fa-sign-out-alt"></i>
+    <span>Logout</span>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+
+  <!-- ✅ JAVASCRIPT -->
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+  const navItems = document.querySelectorAll(".nav-item");
+
+  // Toggle sidebar buka/tutup
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("closed");
+    overlay.classList.toggle("active");
+  });
+
+  // Tutup sidebar bila klik overlay
+  overlay.addEventListener("click", () => {
+    sidebar.classList.add("closed");
+    overlay.classList.remove("active");
+  });
+
+  // Toggle submenu bila sidebar buka
+  navItems.forEach(item => {
+    const arrow = item.querySelector(".arrow");
+    const submenu = item.nextElementSibling;
+
+    item.addEventListener("click", e => {
+      // kalau sidebar tutup, buka sidebar dulu
+      if (sidebar.classList.contains("closed")) {
+        sidebar.classList.remove("closed");
+        overlay.classList.add("active");
+        return;
+      }
+
+      // toggle submenu
+      submenu.classList.toggle("open");
+      arrow.classList.toggle("rotate");
+    });
+  });
+
+  // Tutup semua submenu bila sidebar ditutup
+  const observer = new MutationObserver(() => {
+    if (sidebar.classList.contains("closed")) {
+      document.querySelectorAll(".submenu").forEach(s => s.classList.remove("open"));
+      document.querySelectorAll(".arrow").forEach(a => a.classList.remove("rotate"));
+    }
+  });
+  observer.observe(sidebar, { attributes: true });
+
+ // <!--NOTICE BAR LOOK SPECIAL--> //
+  // Notice Bar Functionality
+
+
+  const notices = document.querySelectorAll('.notice-item');
+  let current = 0;
+
+  setInterval(() => {
+    notices[current].classList.remove('active');
+    current = (current + 1) % notices.length;
+    notices[current].classList.add('active');
+  }, 5000); // 5 saat tukar notice
+
+
+
+</script>
+
+
+
+</body>
+
+<!-- ========================= -->
+
+    <div class="welcome-banner-container">
+        <img src="welcomeAA.png" alt="Welcome to our new home!">
+    </div>
+
+    <!-- === Kandungan Utama === -->
+
+    <style>
+    
+        .main-content {
+        padding: 30px;
+        background-color: var(--main-bg);
+    }
+        .welcome-banner-container {
+        margin-bottom: 24px;
+    }
+        .welcome-banner-container img {
+        width: 100%;
+        border-radius: 12px;
+    }
+    </style>
